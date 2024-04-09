@@ -1,0 +1,49 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb}
+
+\begin{document}
+\section*{System Calls}
+Think of a system call as a request by a user for the system.
+\subsection*{Several `Basic' Types}
+\begin{enumerate}
+      \item Process Control \\
+            Need to halt, normally or via abort
+      \item File Management (create, move, etc. files) \\
+            Manage files and directories
+      \item Device Management \\
+            Process might need multiple resources
+      \item Information Management \\
+            Keep track of up-time and waiting
+      \item Communications - I want to send a message \\
+            Message passing and shared memory
+      \item Protections Protect read, allow modification by owner only \\
+            Manipulate protections of resources
+\end{enumerate}
+
+\section*{Processes}
+\subsection*{States of Processes}
+\begin{description}
+      \item [New:] being created
+      \item [Running:] being executed
+      \item [Waiting:] for some event
+      \item [Ready:] waiting to be assigned a processor
+      \item [Terminated:] finished executing
+\end{description}
+
+We can use these states for a state diagram.
+
+\subsection*{Process Control Block}
+A `snapshot' of a process, and where it is in its execution lifecycle.
+\begin{itemize}
+      \item State
+      \item Program Counter
+      \item CPU Registers
+      \item CPU Scheduling Info
+      \item Memory Management Info
+      \item Accounting Info
+      \item I/O Status Info
+\end{itemize}
+
+Typically PCB lists are implemented as a queue.
+\end{document}

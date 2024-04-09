@@ -1,0 +1,55 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{geometry}[margin=1in]
+\title{\vspace{-1em}CSCI 447 Homework 1}
+\author{Isaac Boaz}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+    \item The three choices that best specify the main functional roles of an OS are
+          \begin{itemize}
+              \item Allocate Resources
+              \item Control and Supervise the execution of multiple processes
+              \item Act as an intermediate between the user and hardware
+          \end{itemize}
+    \item One example of when an OS might want to \textit{permit the CPU to be
+              idle} even when some processes are in need of compute resources are when the
+          device that the OS is running on has a limited battery, and thus the CPU is
+          idle to conserve power.
+    \item The following instructions should be run in kernel mode.
+          \begin{itemize}
+              \item Clear Memory
+              \item Modify the entries in a device-status table
+              \item Turn off interrupts
+              \item Switch from user to kernel mode
+          \end{itemize}
+    \item While such a computer could potentially be powerful, having a computer
+          that is only cache would disallow it to have persistent storage. As a
+          result, the computer would need to be repeatedly programmed every time it
+          shut down.
+    \item Much like how \texttt{sudo} is limited to those with the proper
+          permissions, and by default is not enabled, restricting access to processes,
+          memory, and other sensitive / private data to the kernel requires
+          applications go through the OS or use system calls. This allows for
+          moderating, auditing, and authorized access of these kernel-level actions.
+    \item Interrupts inform the OS that a device requires attention. Traps are a type
+          of interrupt that are triggered by software. System calls are a type of trap
+          that are used to request services from the OS.
+    \item Ideally DMA should have no effect on the CPU's operation, as it uses a
+          separate bus to communicate with memory. In the instances where both the DMA
+          and CPU are trying to access the same memory (level?), there may be overhead to
+          ensure that the CPU and DMA do not interfere with each other.
+    \item Some challenges that arise when developing an OS for a mobile device are:
+          \begin{itemize}
+              \item Balancing power consumption with performance
+              \item Privacy and Security in addition to compatability
+              \item Supporting many different applications and support for
+                    background tasks
+          \end{itemize}
+\end{enumerate}
+
+\end{document}

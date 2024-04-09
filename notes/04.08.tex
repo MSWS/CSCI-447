@@ -1,0 +1,82 @@
+\documentclass{article}
+
+\usepackage{geometry}[margin=1in]
+
+\begin{document}
+Mode Bit: 0 / 1 (kernel / user)
+
+\textbf{DMA} Direct Memory Access
+
+Does direct addressing of memory imply that the O.S is not involved?
+
+\section*{An OS is a program that runs other programs.}
+Where is the source code?
+
+\begin{itemize}
+    \item \textbf{Multprogramming} increases CPU utilization by ensuring the CPU always has something to execute
+    \item Several jobs are kept in memory
+    \item Memory Hierarchy (not all jobs can be `in' memory at one time)
+    \item Hence the use of a job pool!
+    \item OS picks one of the jobs in memory to execute.
+    \item When a job is waiting for an I/O Operation, OS switches to another job
+    \item Security
+\end{itemize}
+
+\textbf{If several jobs are kept in memory, does that mean all of them are running at the same time?}
+No!
+
+\textbf{What security vulnerabilities should we prevent?}
+If we have job 2 as Skype and job 4 as firefox, skype shouldn't be able to access the memory that firefox uses.
+
+The OS handles \underline{where} application data is placed when being moved
+in/out of memory, cache, etc, and where the evicted data needs to go.
+
+Three ways that programs invoke system calls
+\begin{itemize}
+    \item GUI: Graphical User Interface
+    \item batch: scripting
+    \item Command Line
+\end{itemize}
+
+OS thus needs to provide:
+\begin{description}
+    \item[Program Execution:] Load program into memory and run item
+    \item[I/O operations:] Send data to screen, speaker, to/from file, etc.
+    \item[File systems:] Create, delete, add to file, etc.
+\end{description}
+
+\textbf{How would one process communicate with another?}
+\begin{itemize}
+    \item Shared Memory
+    \item Message passing (semaphores)
+\end{itemize}
+
+These services do not necessarily guarantee fair use of resources.
+
+\begin{itemize}
+    \item \textbf{Resource Allocation}
+          \begin{itemize}
+              \item Scheduling algorithms
+          \end{itemize}
+    \item \textbf{Accounting}
+          \begin{itemize}
+              \item Which user/process uses how much of a specific resource
+              \item VM is \textit{basically} accounting
+              \item Programs need time, space, and fair access.
+          \end{itemize}
+    \item \textbf{Protection and Security}
+          \begin{itemize}
+              \item Make sure data from one process/user is not accessible to another process/user
+          \end{itemize}
+\end{itemize}
+
+The command interpreter has no knowledge of what a command does, but instead launches a system program
+
+Located in \texttt{usr/include/x86\_64-linux-gnu/sys}
+
+\textbf{How are parameters passed to the OS?}
+\begin{enumerate}
+    \item Registers
+    \item Save parameters in block or table (memory) and pass via a register
+\end{enumerate}
+\end{document}
