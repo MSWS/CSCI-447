@@ -1,0 +1,99 @@
+\documentclass{article}
+
+\begin{document}
+\section*{Process Creation / Termination}
+
+\subsection*{Termination}
+
+\begin{itemize}
+    \item Process issues an exit instruction
+\end{itemize}
+
+\subsection*{Cooperating processes need to communicate}
+\textbf{Why?}
+\begin{itemize}
+    \item Sharing data
+    \item Computational Speedup
+    \item Modularity
+\end{itemize}
+
+\begin{description}
+    \item[Information Sharing] two+ processes share the same piece of info
+    \item[Computational Speedup]
+    \item[Modularity]
+\end{description}
+
+\subsubsection*{Examples}
+\begin{itemize}
+    \item Producer / Consumer Model
+\end{itemize}
+
+\begin{verbatim}
+    co
+    // - Parrelization
+    oc
+\end{verbatim}
+
+When referencing concurrency, we use the term `arms' to describe the number of
+processes. A program can have two or MORE arms.
+
+\textbf{Independent}: `Can operate without each other, and complete its task w/o
+intervention of something else getting in the way'
+
+\begin{verbatim}
+    string line;
+    read a line from stdin into line;
+    while( !EOF) {
+        co look for pattern in line;
+            if (pattern is in line)
+                write lin;
+        // read next line of input into line
+        oc;
+    }
+\end{verbatim}
+
+The above example is \underline{not} independent, as they both use the line buffer.
+
+\begin{verbatim}
+    string line1, line2;
+    read a line from stdin into line1;
+    while( !EOF) {
+        co look for pattern in line1;
+            if (pattern is in line1)
+                write line1;
+        // read next line of input into line2
+        oc;
+        line1 = line2;
+    }
+\end{verbatim}
+What did we change?
+\begin{itemize}
+    \item At the end of each loop iteration, copy the contents of \texttt{line2} into \texttt{line1}.
+\end{itemize}
+
+Is this solution efficient?
+
+At each iteration of the while loop, how many concurrent processes are created, completed, and destroyed?
+2
+
+How do you determine if two processes are independent?
+
+\begin{description}
+    \item[Read] set of variables read by a process
+    \item[Write] set of variables written by a process
+\end{description}
+
+Separate processes \(P_a, P_b\) on separate CPUs
+
+A process/thread may have a private set of variables scoped only to that thread.
+
+Two processes are \textbf{independent} if the write set of each is disjoint from
+both the read and write sets of the other.
+
+\begin{itemize}
+    \item Independence
+    \item Threads
+    \item Synchronization
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,47 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb}
+
+\begin{document}
+\begin{description}
+    \item[Concurrent: ] Two or more processes are making progress
+    \item[Parallel: ] Two or more things are actively running at the same time
+\end{description}
+
+With m threads executing n atomic actions each, there are 6 possible histories
+
+\(_3 P _3\)
+
+What about 3 threads executing 2 actions each?
+
+\begin{equation*}
+    < 6!
+\end{equation*}
+
+90
+
+2 threads executing 3 actions each?
+
+Is there a formula for this?
+
+\begin{equation*}
+    \frac{(mn)!}{(n!)^m}
+\end{equation*}
+
+Concurrent may have wait time, parallel does not
+
+On a single CPU, concurrency is possible, but not parallelism
+
+On a multiple CPU system, parallelism is possible
+
+\textbf{What happens when a thread is killed mid-execution?}
+
+Cancellations
+
+\begin{description}
+    \item[Asynchronous: ] The target thread is immediately terminated
+    \item[Synchronous: ] The target thread periodically `checks in' to find out if it should be terminated
+\end{description}
+
+
+\end{document}

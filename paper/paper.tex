@@ -1,0 +1,32 @@
+\documentclass[12pt]{article}
+
+\usepackage{geometry}[margin=1in]
+
+\usepackage{soul}
+
+\title{CSCI 447 - Birrell1983}
+\author{Isaac Boaz}
+
+\begin{document}
+\maketitle
+`Implementing Remote Procedures Calls' \textbf{discusses a new package that
+    provides a remote procedure call facility, and describes its structure,
+    facilities, and metrics such as performance.} \textit{This paper was created
+    to introduce and essentially `advertise' the new RPC facility for the
+    `Cedar' project, which attempts to resolve issues that arise when designing
+    a facility (such as communication failures, address-containing arguments,
+    binding, protocols, data integrity/security, and others)}. \ul{The research
+    was conducted within the `Cedar' programming environment and the Xerox
+    research network. Their measurements and metrics included varying argument
+    inputs, word array size, and instructions (rewind + unwind.)}
+
+The paper tackles implementing RPC into their specific environment, though I
+think describing the current paradigm of RPC (especially its current
+implementation) outside of their environment, and why they chose against using
+pre-existing infrastructure.  This way, having a comparison table of other
+software in contrast to their RPC implementation would allow for a better
+understanding of both the shortcomings and the improvements made. The paper also
+references some measurements that aren't embedded within the article directly
+(and are instead linked as a bibliography reference). Appending these directly
+referenced diagrams as an appendix would allow for more convenient reference.
+\end{document}

@@ -1,0 +1,79 @@
+\documentclass{article}
+
+\begin{document}
+A solution to the critical section problem must satisfy 3 criteria:
+
+\begin{description}
+    \item[Mutual Exclusion] If a process is executing its critical section, no other process can be executing its critical section
+    \item[Progress] If no other process is executing its critical section, and some process wants to enter its critical section, then only those processes not executing code in their remainder section can decide who enters
+    \item[Bounded Waiting] There must be a limit on the number of times that another process is allowed to enter its critical section after a process has made a request to enter its critical section
+\end{description}
+
+\begin{verbatim}
+do {
+    flag[i] = true;
+    turn = j;
+    while (flag[j] && turn == j) ;
+    // critical section
+    flag[i] = false;
+    // remainder section
+} while (true);
+\end{verbatim}
+\begin{itemize}
+    \item Works for 2 processes \texttt{j = 1 - i;}
+    \item Requires additional (shared) data
+          \begin{verbatim}
+    int turn;
+    boolean flag[2];
+    \end{verbatim}
+    \item What is the utility of \texttt{turn, flag}?
+\end{itemize}
+
+\texttt{j} refers to the `other' process
+\texttt{turn} indicates whose turn it is to enter their section
+\texttt{flag[]} specifies if one of \texttt{i} or \texttt{j} are ready to enter their section
+
+\begin{verbatim}
+do {
+    // acquire lock
+    // critical section
+    // release lock
+    // other stuff (remainder)
+} while(true);
+\end{verbatim}
+
+\subsection*{Semaphores}
+A semaphore is a data structure that permits threads to coordinate among each
+other and specify which thread(s) wait and which thread(s) execute.
+
+\begin{itemize}
+    \item A data struct that contains only a single non-negative integer as a
+          datum
+    \item The int can be initialized to any non-negative value, but once
+          declared and set, it is modified only by several methods (there are no
+          direct get/set methods)
+    \item Operation 1: increment
+    \item Operation 2: decrement
+    \item Has a constructor that initializes the semaphore
+\end{itemize}
+
+If there \emph{were} set/get functions, it would run into the same issue as the
+critical section problem.
+
+If decrement would result in the datum being negative, then the thread that
+issued the decrement will be blocked and will not continue until another thread
+increments the semaphore.
+
+If increment occurs, an \underline{already} waiting thread is unblocked.
+
+\textbf{Which thread is executed after a shared semaphore's value is incremented?}
+\subsubsection*{Nuances}
+\begin{itemize}
+    \item Incrementing may affect other threads
+    \item Decrementing will only affect the thread that called it
+\end{itemize}
+
+signal/wait
+
+
+\end{document}
