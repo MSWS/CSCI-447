@@ -3,6 +3,8 @@
 \usepackage{amsmath, amssymb}
 \usepackage{listings}
 \usepackage{geometry}[margin=1in]
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
 
 \title{CSCI 447 Homework 2}
 \author{Isaac Boaz}
@@ -65,9 +67,73 @@ Valid permutations:  11144
 Thus, with 25200 ordered permutations, only 11144 are valid. This means that 44.22\% of the ordered permutations are valid.
 
 \section*{Question 2}
+\begin{tabular}{|cc|c|cc|c|cc|}
+    \multicolumn{2}{c}{Thread A} &                    & \multicolumn{2}{c}{Thread B} &     & \multicolumn{2}{c}{Thread C}                               \\
+    \hline
+    IA1                          & \texttt{x = x + 1} &                              & IB2 & \texttt{x = x - 2}           &  & IC1 & \texttt{x = x + 2} \\
+    IA2                          & \texttt{print(x)}  &                              & IB2 & \texttt{print(x)}            &  & IC2 & \texttt{print(x)}  \\
+    \hline
+\end{tabular}
+
+\begin{tabular}{|cc|c|cc|c|cc|}
+    \multicolumn{2}{c}{Thread A} &                   & \multicolumn{2}{c}{Thread B} &        & \multicolumn{2}{c}{Thread C}                                 \\
+    \hline
+    IA1\_1                       & \texttt{y <- x}   &                              & IB2\_1 & \texttt{y <- x}              &  & IC1\_1 & \texttt{y <- x}   \\
+    IA1\_2                       & \texttt{y += 1}   &                              & IB2\_2 & \texttt{y -= 2}              &  & IC1\_2 & \texttt{y += 2}   \\
+    IA1\_3                       & \texttt{x <- y}   &                              & IB2\_3 & \texttt{x <- y}              &  & IC1\_3 & \texttt{x <- y}   \\
+    IA2                          & \texttt{print(x)} &                              & IB2    & \texttt{print(x)}            &  & IC2    & \texttt{print(x)} \\
+    \hline
+\end{tabular}
+
+A and B are impossible due to the instructions never lining up to both decrease
+and then increase by 1 (or vice-versa).
+
+% To help simplify, let's analyze the possibilities of each thread when we
+% initialize \(x = 0\), including if they were to be interrupted.
+
+% \begin{enumerate}[label=\Alph*]
+%     \item Incremenets \texttt{x} by one.
+%           \begin{enumerate}[label=\arabic*.]
+%               \item Store x into a tmp variable (say y)
+%               \item Increment y by one
+%               \item Store y back into x
+%           \end{enumerate}
+%           Thus, the possible outcomes for if \(x\) were to be interfered with
+%           while A processes are as follows:
+%           \begin{enumerate}[label=\arabic*.]
+%               \item If we modified \(x\) to be some value other than \(0\) subsequent
+%                     to this instruction executing, then the completion of this thread
+%                     could result in \(x\) being fetched as 0.
+%               \item If 1 were true, then this would override the previously set
+%                     \(x\) value.
+%               \item Consequently this would store the new \(x\), overriding the
+%                     previously set value.
+%           \end{enumerate}
+
+%           As a result, the net possibilities of this thread are either setting
+%           \(x\) to 1, or \(x + 1\).
+%     \item Decrements \texttt{x} by two. \\
+%           Following the above steps, we see that Thread B could set \(x\) to
+%           \(x\), or \(x - 2\).
+% \end{enumerate}
+% C (151) is possible, initialize \(x = 2\)
+
+% \begin{tabular}{c|c|c|l}
+%     Thread & Instruction & x & output \\
+%     \hline
+%     B      & Get 3       & 3 &        \\
+%     A      & Get 3       & 3 &        \\
+%     A      & 4 = 3 + 1   & 3 &        \\
+%     C      & Get 3       & 3 &        \\
+%     A      & Set 4       & 4 &        \\
+%     B      & 1 = 3 - 2   & 4 &        \\
+%     B      & Set 1       & 1 &        \\
+%     B      & Print x     & 1 & 1
+% \end{tabular}
+
 All of them except D is impossible.
 
-D (223) is possible ->
+D (223) is possible, initialize \(x = 4\)
 
 \begin{tabular}{c|c|c|l}
     Thread & Instruction & x & output \\
@@ -85,6 +151,9 @@ D (223) is possible ->
     A      & Set 3       & 3 & 22     \\
     A      & Print x     & 3 & 223    \\
 \end{tabular}
+
+The rest are similarly possible, though I do not care enough to figure out the
+correct ordering \footnote{Points for honesty though?}.
 
 \section*{Question 3}
 \subsection*{Advantages}

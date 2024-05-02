@@ -1,31 +1,25 @@
-shared_x = 0
+import itertools
+instructions = []
 
-def get():
-    return shared_x
+def main():
+    for thread in range(3):
+        for i in range(1, 4):
+            instructions.append(chr(65 + thread)+"_"+str(i))
 
-def set(x):
-    global shared_x
-    shared_x = x
+    perms = itertools.permutations(instructions)
+    perms = filter(filter_valid, list(perms))
 
-def prin():
-    print(shared_x)
+    ls = list(perms)
+    print(ls)
+    print(len(ls))
 
-a = get()
-c = get()
-b = get()
+def filter_valid(s: list[str]) -> bool:
+    for thread in range(3):
+        for i in range(2, 4):
+            t = chr(65 + thread)
+            if s.index(t + "_" +str(i)) < s.index(t +"_" + str(i - 1)):
+                return False
+    return True
 
-a = a + 1
-
-set(a)
-
-prin()
-
-b = b - 2
-
-set(b)
-
-prin()
-
-c = c + 2
-set(c)
-prin()
+if __name__ == "__main__":
+    main()
