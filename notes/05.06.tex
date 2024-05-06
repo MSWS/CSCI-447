@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb}
+\begin{document}
+
+More work needed to calculate \texttt{base + limit} vs checking just the base.
+
+Thus, we check if a given address is \(\geq\) the base and THEN
+we check if it is \(\leq\) the limit.
+
+Base checked first, then base + limit violation
+\begin{align*}
+	q: & 3 ops         & 19/3 \text{ avg} \\
+	r: & 3 + 5 = 8 ops                    \\
+	s: & 3 + 5 = 8 ops
+\end{align*}
+
+Base + limit checked first, then base violation
+\begin{align*}
+	q: & 5 ops         & 21/3 \text{ avg} \\
+	r: & 5 + 3 = 8 ops                    \\
+	s: & 5 + 3 = 8 ops
+\end{align*}
+
+When in memory should a process be placed?
+\begin{verbatim}
+  for (int x = 0; x < 10; x++) {
+    string s = input() // prompt user
+  }
+\end{verbatim}
+
+The OS knows the size of an int, but it doesn't know the size of the input.
+
+\begin{quote}
+  IF you know the size of the datum, and where in memory it might reside at compile time, then reserve the memory at compile time.
+\end{quote}
+
+What is the downside of this approach?
+
+\begin{itemize}
+  \item Overflow
+  \item Not running
+  \item Coordination
+\end{itemize}
+\end{document}
