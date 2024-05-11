@@ -1,0 +1,78 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}[margin=1in]
+\usepackage{enumitem}
+
+\author{Isaac Boaz}
+\title{CSCI 447 Homework 3}
+
+\begin{document}
+\maketitle
+
+\subsection*{Question 1}
+Having a very small quantum requires the PC to do a lot more work that isn't
+directly executing processes, whether that be
+\begin{itemize}
+    \item Context switching between processes
+    \item Decoding processes
+    \item Scheduling processes
+\end{itemize}
+
+While a lower quantum may ensure more processes get a more fair distribution of
+time, it comes at the sacrifice of CPU efficiency.
+
+\subsection*{Question 2}
+\begin{itemize}
+    \item If FCFS is used:
+          \begin{tabular}{ccccc}
+              Process Order   & \(P_1\) & \(P_2\) & \(P_3\) & Average \\
+              Arrival Time    & 0       & 0.4     & 1.0               \\
+              Execution Time  & 0       & 8       & 12                \\
+              Turnaround Time & 8       & 11.6    & 12      & 10.53   \\
+          \end{tabular}
+    \item If SJF is used:
+          \begin{tabular}{ccccc}
+              Process      Order & \(P_1\) & \(P_3\) & \(P_2\) & Average \\
+              Arrival Time       & 0       & 1       & 0.4               \\
+              Execution Time     & 0       & 8       & 9                 \\
+              Turnaround Time    & 8       & 8       & 12.6    & 9.53    \\
+          \end{tabular}
+    \item If SJF is used: with idle from 0 to 1
+          \begin{tabular}{ccccc}
+              Process      Order & \(P_1\) & \(P_3\) & \(P_2\) & Average \\
+              Arrival Time       & 0       & 1       & 0.4               \\
+              Execution Time     & 1       & 9       & 10                \\
+              Turnaround Time    & 9       & 9       & 13.6    & 10.53   \\
+          \end{tabular}
+\end{itemize}
+
+\subsection*{Question 3}
+\begin{enumerate}[label=\alph*.]
+    \item First-come, first-served could result in starvation if a process with
+          a long execution time is placed at the front of the queue.
+
+          Eg: \(P_1\) has an execution time of 100, and \(P_2\) has an execution
+          time of 1. If \(P_1\) is placed at the front of the queue, \(P_2\)
+          will never be executed.
+    \item Round robin most likely will not result in starvation, as each process
+          is given a quantum of time to execute. However, if the quantum is too
+          small, the CPU could spend more time context switching than executing
+          processes.
+    \item Shortest Job First could still result in starvation depending on the
+          order that jobs arrive to the CPU, and the length of the jobs. If a long job
+          arrives first, and a series of short jobs arrive after, the short jobs may
+          never be executed.
+    \item Priority scheduling could result in starvation if a process with a high
+          priority is placed at the front of the queue, and never completes.
+\end{enumerate}
+
+\subsection*{Question 4}
+\begin{enumerate}[label=\alph*.]
+    \item 430 + 219 = 649
+    \item 400 + 1327 = 1727
+    \item 10 + 2300 = 2310
+    \item 112 + 1952 = 2064
+    \item 500 + 90 = 590
+\end{enumerate}
+\end{document}
