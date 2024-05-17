@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1715912678 "/config/workspace/CSCI-447/study/study.tex" "study.pdf" "study" 1715912680
-  "/config/workspace/CSCI-447/study/study.tex" 1715912678 16490 ab9ffadabec8dc7e677212fe8df2bf46 ""
+["pdflatex"] 1715913582 "/config/workspace/CSCI-447/study/study.tex" "study.pdf" "study" 1715913583
+  "/config/workspace/CSCI-447/study/study.tex" 1715913582 16606 ef8dd72f84e4bb40a5c4952e8a80b53f ""
   "/etc/texmf/web2c/texmf.cnf" 1715759715 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx0900.tfm" 1136768653 3584 1a7de6c99457381c64abc1a7c545505f ""
@@ -12,6 +12,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm0900.tfm" 1136768653 3584 d3d8ac8b25ca19c0a40b86a5db1e8ccc ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm" 1136768653 3584 f80ddd985bd00e29e9a6047ebd9d4781 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm3583.tfm" 1136768653 3584 5ac9c10e321e929180c4c2c01c1acc88 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecti0500.tfm" 1136768653 3072 3d6a4805e3f8c4693f997dc6a16a6b93 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecti0700.tfm" 1136768653 3072 b90b057319ce008920857c32d19eeb4d ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecti0900.tfm" 1136768653 3072 a603fa6d934ebc72197ed1c389943d86 ""
@@ -121,6 +122,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1636758526 8448 96f18c76bf608a36ee6fbf021ac1dd32 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd" 1622581934 2443 6dd9a5deeddddfcceb01d1932590ebad ""
   "/usr/share/texlive/texmf-dist/tex/latex/changepage/changepage.sty" 1256071977 4523 a9044e2dc40e764dac60d2acda7ae919 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/draftwatermark/draftwatermark.sty" 1607465154 6990 c19f0e2ee25970cd4873c23ce67e5a94 ""
   "/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty" 1561238569 51697 f8f08183cd2080d9d18a41432d651dfb ""
   "/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty" 1601931149 46845 3b58f70c6e861a13d927bff09d35ecbc ""
@@ -128,6 +130,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg" 1459978653 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def" 1601931164 19103 48d29b6e2a64cb717117ef65f107b404 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty" 1639603921 7197 eb6c1ebf41667a05cb50c23c19d5e8bc ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty" 1622581934 18399 7e40f80366dffb22c0e7b70517db5cb4 ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty" 1636758526 7996 a8fb260d598dcaf305a7ae7b9c3e3229 ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty" 1622581934 2671 4de6781a30211fe0ea4c672e4a2a8166 ""
@@ -165,6 +168,7 @@
   "/usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb" 1715759729 154599 ded6d7c21788a8930eadc7fef7518942 ""
   "/usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb" 1715759729 149037 995a6f1e12c1d647b99b1cf55db78699 ""
   "/usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb" 1636152094 138258 6525c253f16cededa14c7fd0da7f67b2 ""
+  "/usr/share/texmf/fonts/type1/public/cm-super/sfrm3583.pfb" 1715759729 131277 b5ecd50862e76a1a3a14f295fefb0788 ""
   "/usr/share/texmf/fonts/type1/public/cm-super/sfti0900.pfb" 1715759729 183673 6df73819bb3e1246a6315a4913a2d331 ""
   "/usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb" 1636152094 186554 e8f0fa8ca05e038f257a06405232745f ""
   "/usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb" 1636152094 169201 9ebf99020dde51a5086e186761a34e8f ""
@@ -173,8 +177,8 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1715759758 2798913 66e5e50ae12affa992896eef6210936e ""
   "result.png" 1715902483 9742 576e8c7e48df7b3848bc9d035b84d95d ""
   "scheduling.png" 1715902178 53392 2828144936fe139a2d675b715e27b69a ""
-  "study.aux" 1715912679 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
-  "study.tex" 1715912678 16490 ab9ffadabec8dc7e677212fe8df2bf46 ""
+  "study.aux" 1715913583 32 044b7f8fc9779af7531264e0c5c84b6d "pdflatex"
+  "study.tex" 1715913582 16606 ef8dd72f84e4bb40a5c4952e8a80b53f ""
   (generated)
   "study.aux"
   "study.log"

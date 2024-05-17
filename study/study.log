@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.15)  17 MAY 2024 02:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.15)  17 MAY 2024 02:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -542,6 +542,8 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@layouthoffset=\dimen322
 \Gm@layoutvoffset=\dimen323
 \Gm@dimlist=\toks38
+) (/usr/share/texlive/texmf-dist/tex/latex/draftwatermark/draftwatermark.sty
+Package: draftwatermark 2020/12/08 3.0 Put a gray textual watermark on document pages
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
 File: tikzlibraryshapes.geometric.code.tex 2021/05/15 v3.1.9a (3.1.9a)
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
@@ -554,20 +556,20 @@ File: pgflibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )) (./study.aux)
 \openout1 = `study.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count339
@@ -597,14 +599,14 @@ Package: ninecolors 2021/05/24 v2021C Select colors with proper color contrast
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(7.22743pt, 590.28044pt, 0.0pt)
-* v-part:(T,H,B)=(7.22743pt, 830.59198pt, 7.22743pt)
+* h-part:(L,W,R)=(14.45377pt, 575.82668pt, 7.22743pt)
+* v-part:(T,H,B)=(7.22743pt, 823.36565pt, 14.45377pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=590.28044pt
-* \textheight=830.59198pt
-* \oddsidemargin=-65.04256pt
-* \evensidemargin=-65.04256pt
+* \textwidth=575.82668pt
+* \textheight=823.36565pt
+* \oddsidemargin=-57.81622pt
+* \evensidemargin=-57.81622pt
 * \topmargin=-102.04256pt
 * \headheight=12.0pt
 * \headsep=25.0pt
@@ -623,28 +625,33 @@ Package: ninecolors 2021/05/24 v2021C Select colors with proper color contrast
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 48.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 48.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 <scheduling.png, id=4, 651.93562pt x 271.0125pt>
 File: scheduling.png Graphic file (type png)
 <use scheduling.png>
-Package pdftex.def Info: scheduling.png  used on input line 167.
-(pdftex.def)             Requested size: 290.14021pt x 120.61464pt.
+Package pdftex.def Info: scheduling.png  used on input line 173.
+(pdftex.def)             Requested size: 282.91333pt x 117.61241pt.
 <result.png, id=5, 397.485pt x 114.4275pt>
 File: result.png Graphic file (type png)
 <use result.png>
-Package pdftex.def Info: result.png  used on input line 177.
-(pdftex.def)             Requested size: 140.0701pt x 40.32434pt.
- [1
+Package pdftex.def Info: result.png  used on input line 183.
+(pdftex.def)             Requested size: 136.45667pt x 39.2837pt.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./scheduling.png (PNG copy)> <./result.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 228--231
+
+LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <149.37697> not available
+(Font)              size <35.83> substituted on input line 206.
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+ <./scheduling.png (PNG copy)> <./result.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 234--237
 \T1/cmr/m/n/10 pro-cess runs, we
  []
 
@@ -658,7 +665,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 228--231
 > Step: build the whole table.
 
 Package multicol Warning: multicols* inside a box does not make sense.
-(multicol)                Going to balance anyway on input line 349.
+(multicol)                Going to balance anyway on input line 355.
 
 > Step: init table outer spec.
 > Step: parse table options.
@@ -669,27 +676,32 @@ Package multicol Warning: multicols* inside a box does not make sense.
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
 
-Overfull \hbox (142.29178pt too wide) in paragraph at lines 309--378
+Overfull \hbox (138.67834pt too wide) in paragraph at lines 315--384
 []$[]$ $[]$ 
  []
 
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 405.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 411.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [2] (./study.aux) ) 
+) [2] (./study.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 113.54697pt have occurred.
+
+ ) 
 Here is how much of TeX's memory you used:
- 18994 strings out of 478287
- 392827 string characters out of 5849289
- 743354 words of memory out of 5000000
- 36875 multiletter control sequences out of 15000+600000
- 487310 words of font info for 70 fonts, out of 8000000 for 9000
+ 19093 strings out of 478287
+ 395450 string characters out of 5849289
+ 744117 words of memory out of 5000000
+ 36969 multiletter control sequences out of 15000+600000
+ 488079 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  100i,15n,104p,548b,801s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0500.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on study.pdf (2 pages, 378350 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0500.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm3583.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on study.pdf (2 pages, 389110 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+ 129 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  23 words of extra memory for PDF output out of 10000 (max. 10000000)
 
