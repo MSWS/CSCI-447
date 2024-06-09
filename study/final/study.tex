@@ -1,0 +1,582 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{parskip}
+\usepackage{tikz}
+\usepackage{changepage}
+\usepackage{tabularray}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage[a4paper,
+            bindingoffset=0in,
+            left=0.2in,
+            right=0.1in,
+            top=0.1in,
+            bottom=0.2in,
+            footskip=0.25in]{geometry}
+\usepackage{draftwatermark}
+	
+\SetWatermarkColor[gray]{0.95}
+\SetWatermarkText{Isaac Boaz}
+\SetWatermarkScale{1}
+
+\pagenumbering{gobble}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{node} = [ellipse, minimum height=0.5cm,text centered, draw=black, fill=blue!20]
+
+\newcommand{\undertext}[2] {$\underbrace{\textrm{#1}}_{\textrm{#2}}$}
+\newcommand{\resetsize}{\footnotesize}
+
+\setlist{nosep}
+\setlength{\parindent}{0em}
+\setlength{\itemindent}{0em}
+\setlength{\leftmargini}{0em}
+
+\begin{document}
+\begin{multicols*}{2}
+    \resetsize
+    \subsubsection*{Glossary}
+    \setlength{\leftmargini}{6em}
+    \begin{itemize}
+        \item[OS] provides the environment within which programs are executed
+        \item Provides \emph{services} for programs
+        \item Provides \emph{interfaces} for users
+        \item Collection of \emph{components} and their interconnections
+        \item[Parallelism] \(> 1\) task being performed simultaneously \\
+            (one process may be waiting on another)
+        \item[Concurrency] multiple tasks making progress at one time \\
+            (nobody is waiting)
+        \item[Throughput] number of processes completed in a unit of time
+        \item[Turnaround] from time of submission to completion, \\
+            INCLUDING wait time
+        \item[Wait Time] time spent in waiting/ready queue, NOT including I/O queue / time
+        \item[Response Time] time from submission to time when `first' usable data/output produced
+        \item[TLB] Translation Lookaside Buffer
+        \item[MMU] Memory Management Unit
+        \item[RMS] Rate Monotonic Scheduling
+        \item[EDF] Earliest Deadline First
+        \item[PTBR] Page Table Base Register (pointer to page table in memory)
+        \item[Context Switch] When a process is forced out of CPU (quantum or pre-emption)
+        \item[Thrashing] When a process spends more time swapping than executing
+        \item[Track] The `ring' that is 1 bit wide that passes under a stationary HD head
+        \item[Cylinder] The set of tracks among all platers for a single seek position
+        \item[Sector] A segment in a track
+        \item[RAID] Redudant Array of Independent Disks
+        \item[DMA] Direct Memory Access
+        \item[FAT] File Allocation Table
+    \end{itemize}
+
+    \vspace*{-1em}
+    \subsubsection*{Parameter Passing}
+    \setlength{\leftmargini}{2em}
+    \begin{enumerate}
+        \item Pass paramater via registers
+        \item Save parameters in block/table (memory), pass via registers the
+              address of the block
+        \item Placed onto the stack
+    \end{enumerate}
+    \subsubsection*{Working Set Model}
+    \begin{description}
+        \item[Main Idea] Consider pages a process needed in the past, and
+            use as indicator of pages needed in the future
+        \item[Locality] A set of pages actively used together
+        \item[Spatial Locality] Page references close in time are located near
+            to each other in space
+        \item[Temporal Locality] A page is referenced repeatedly in some unit of time
+    \end{description}
+
+    Essentially a \emph{sliding window} of time \(t = \Delta\) that moves over the page
+    requests a process makes.
+
+    \begin{multicols*}{2}
+        In modern systems, \(\Delta\) is in the 5000 - 15000 range. \\
+        If the WS size of process \(i\) is \(WSS_i\)\dots
+
+        \begin{equation*}
+            D = \sum_{i=0}^{n} WSS_i
+        \end{equation*}
+        \columnbreak \\
+        If total demand \(D\) is greater than count of available frames,
+        thrashing will occur. \\
+        The OS monitors WSS for each process, and
+        allocates for each enough frames to its working set size. If there are
+        `free' frames, initates another process. If too few, a process is
+        suspended.
+    \end{multicols*}
+
+    \vspace*{-2em}
+    \subsubsection*{Process}
+    \begin{multicols*}{2}
+        \begin{tikzpicture}[node distance=0.8cm]
+            \node (start) [node] {new};
+            \node (ready) [node, below of=start, xshift=1cm] {ready};
+            \node (running) [node, right of=ready, xshift=1cm, yshift=1cm] {running};
+            \node (waiting) [node, right of=ready, xshift=1cm, yshift=-1cm] {waiting};
+            \node (terminated) [node, right of=waiting, xshift=1.5cm] {terminated};
+            \draw [arrow] (start) -- (ready);
+            \draw [arrow, <->] (ready) -- (running);
+            \draw [arrow] (running) -- (waiting);
+            \draw [arrow] (running) -- (terminated);
+            \draw [arrow] (waiting) -- (ready);
+        \end{tikzpicture}
+        \columnbreak
+        \begin{flushright}
+            \vspace*{-2.5em}
+            \begin{description}
+                \item[New] being created
+                \item[Running] being executed
+                \item[Waiting] for some event
+                \item[Ready] Waiting to be assigned to a processor
+                \item[Terminated] Finished execution
+            \end{description}
+        \end{flushright}
+    \end{multicols*}
+
+    \begin{multicols*}{2}
+        \begin{tabular}{|c|}
+            \hline
+            \textbf{Process Control Block} \\
+            \hline
+            State                          \\
+            \hline
+            Program Counter                \\
+            \hline
+            CPU Registers                  \\
+            \hline
+            CPU Scheduling Info            \\
+            \hline
+            Mem Mgmt Info                  \\
+            \hline
+            Accounting Info                \\
+            \hline
+            I/O Status                     \\
+            \hline
+        \end{tabular}
+        \columnbreak \\
+        Two processes are \emph{independent} if the write set of each is disjoint
+        from both the read and write sets of the other.
+    \end{multicols*}
+    % \columnbreak
+    \subsection*{Threads}
+    \subsubsection*{Many-to-one} All user threads map to a single kernel thread \\
+    If a user thread makes a block system call, the entire process (made up of
+    multiple user threads) will block Because only 1 thread can access the
+    kernel at any one time, multiple threads are unable to run concurrently on a
+    multicore computer
+
+    \vspace*{-1em}
+    \subsubsection*{One-to-one} Each user thread is mapped to a unique kernel thread \\
+    The creation of a user thread requires (considerable) overhead to create a
+    kernel thread. If a user thread is idle (perhaps waiting on another thread
+    to finish), then the kernel thread with which the user thread 1s associated
+    is needlessly consuming kernel space resources When one thread is blocked
+    (user or kernel thread), the other threads can continue. Concurrency is
+    enabled
+
+    \vspace*{-1em}
+    \subsubsection*{Many-to-many} Many user threads are mapped to a \(\leq \#\)
+    kernel threads At the user level, multiple threads are created, and it is up
+    to the OS to schedule/orchestrate/map each of them to a kernel thread
+
+    \begin{multicols*}{2}
+        With \(m\) threads, \(n\) instructions each:
+        \columnbreak
+        \begin{equation*}
+            \frac{(mn)!}{(n!)^m} \text{ possible histories}
+        \end{equation*}
+    \end{multicols*}
+
+    \vspace*{-3em}
+
+    \subsubsection*{Critical Section Problem}
+
+    \begin{description}
+        \item[Mutual Exclusion] If a process is executing its critical section, no others can be executing theirs
+        \item[Progress] If no process is executing its critical section, AND
+            some process wants to enter its, only those processes NOT executing can
+            decide who enters
+        \item[Bounded Waiting] There must be a limit on the number of times another process is allowed to enter its critical section after a process has made a request to enter its critical section (i.e., no starvation).
+    \end{description}
+
+    \subsubsection*{Semaphores}
+    \begin{itemize}
+        \item Must be careful NOT to omit an inc/dec in code.
+        \item Global, thus must know how entire program works to use them
+        \item Can't infer which waiting process will run next
+    \end{itemize}
+    \subsubsection*{Monitors}
+    \begin{description}
+        \item[SC] The signaler continues, and the signaled executes at some later time
+        \item[SW] The signaler waits until some later time and the signaled executes immediately
+    \end{description}
+    A monitor follows one, but not both.
+
+    \includegraphics[width=\columnwidth]{scheduling.png}
+
+    \vspace*{-2em}
+    \subsection*{Scheduling}
+    \begin{multicols*}{2}
+        \begin{description}
+            \item[FCFS] First Come First Serve
+            \item[SJF] Shortest Job First
+            \item[Priority] Highest priority first
+        \end{description}
+        \begin{center}
+            \includegraphics[width=\columnwidth]{result.png}
+            Priority
+        \end{center}
+        \columnbreak
+        \begin{tabular}{|c|c|c|}
+            \hline
+            PID & ms & Priority \\
+            P1  & 24 & 1        \\
+            P2  & 16 & 3        \\
+            P3  & 2  & 5        \\
+            P4  & 4  & 2        \\
+            P5  & 3  & 4        \\
+            \hline
+        \end{tabular}
+    \end{multicols*}
+    \vspace*{-2em}
+    May encounter issues like starvation / aging (hence Round Robin).
+
+    \begin{flushright}
+        \vspace*{-1em}
+        \subsection*{Hard Drive}
+    \end{flushright}
+    \vspace*{-2em}
+    \begin{description}
+        \item[FCFS] First Come First Serve
+        \item[SSTF] Shortest Seek Time First
+        \item[SCAN] Full back and forth, reading during both swings
+        \item[C-SCAN] Full back and forth, reading during only one swing (C = Circular)
+        \item[LOOK] Back and forth from lowest requested address to highest requested address
+        \item[C-LOOK] Back and forth from lowest requested address to highest
+            requested address, reading during only one swing
+    \end{description}
+    An I/O request will be for a specific block, in a specific sector, for a certain track, on one of many cylinders.
+
+    \begin{flushright}
+        \vspace*{-2em}
+        \subsubsection*{File Systems}
+    \end{flushright}
+    \undertext{\texttt{-rwx}}{owner}
+    \undertext{\texttt{r-x}}{group}
+    \undertext{\texttt{r-x}}{others}
+    \undertext{\texttt{1}}{sticky}
+    \undertext{\texttt{jagodzf}}{user}
+    \undertext{\texttt{grp.csci.Faculty}}{group}
+    \undertext{\texttt{Dec 1 2024}}{modified}
+    \undertext{\texttt{exam.html}}{name}
+\end{multicols*}
+
+\newpage
+\resetsize
+
+\begin{multicols*}{2}
+    \subsection*{Real-time scheduling}
+    \begin{description}
+        \item[Periodic] occuring at a constant interval / period (p)
+        \item[Process time] time needed to burst (t)
+        \item[Deadline] time the process must be completed by (d)
+    \end{description}
+
+    If a requesting process does not `satisfy' \(0 \leq t \leq d \leq p\), the
+    scheduler should reject the process.
+
+    \vspace*{-2em}
+    \setlength{\columnsep}{-5em}
+    \begin{multicols*}{2}
+        Suppose two processes:
+        \columnbreak
+        \begin{description}
+            \item[Process 1]  p:50ms, t:20ms, d:1/period
+            \item[Process 2]  p:100ms, t:35ms, d:1/period
+        \end{description}
+    \end{multicols*}
+    \vspace*{-3em}
+    \setlength{\columnsep}{1em}
+    \begin{multicols*}{3}
+        Can the CPU process both?
+        \columnbreak \\
+        \textbf{Utilization (t/p)}
+        \begin{align*}
+            P1: & 20/50  & = 0.4  \\
+            P2: & 35/100 & = 0.35 \\
+                &        & 0.75
+        \end{align*}
+        \columnbreak \\
+        Assuming no other process runs, we should be able to service both.
+    \end{multicols*}
+
+    \vspace*{-4em}
+    \begin{description}
+        \item[RMS] Upon entering, a process is assigned a priority inversely
+            proportional to its period. (i.e., the shorter the period, the
+            higher the priority). P2 would be broken up into two chunks (30 / 5)
+            at t=50.
+        \item[EDF] Upon entering, a process is assigned a priority inversely
+            proportional to its deadline. (i.e., the sooner the deadline, the higher
+            the priority).
+    \end{description}
+
+    By design, real-time CPU scheduling does not permit a process that has
+    already met its period deadline to start a second time in the same period.
+
+    \setlength{\columnsep}{-15em}
+    \begin{multicols*}{2}
+        \subsubsection*{Storage Hierarchy}
+        \begin{tabular}{|c|}
+            \hline
+            Hard Drive \\
+            Memory     \\
+            L2 Cache   \\
+            L1 Cache   \\
+            Registers  \\
+            ALU        \\
+            \hline
+        \end{tabular}
+        \columnbreak
+        \begin{flushright}
+            \subsubsection*{LRU - Second Chance}
+            \begin{enumerate}
+                \item Assign a reference bit to each page
+                \item When a page is referenced, set the reference bit to 1
+                \item When evicting, start at the location where last eviction occurred
+                \item If reference bit is 1, set to 0 and move to next page
+                \item Repeat until a page with reference bit 0 is found
+            \end{enumerate}
+        \end{flushright}
+    \end{multicols*}
+
+    \vspace*{-2em}
+    \begin{center}
+        \begin{tabular}{cccc}
+            \multicolumn{4}{c}{(referenced, modified)}                                                                      \\
+            (0, 0)                                        & (1, 0)                                        & (0, 1) & (1, 1) \\
+            \multicolumn{2}{l}{Evict first `best choice'} & \multicolumn{2}{r}{Evict last `worst choice'}
+        \end{tabular}
+    \end{center}
+
+    \subsection*{Memory Allocation}
+    \begin{description}
+        \item[Best Fit] Fit into a hole such that resulting left-over hole is
+            size minimized (ideally 0)
+        \item[First Fit] Fit into first hole (most often reading from bottom
+            addresses to higher) that can accomodate the process
+        \item[Worst Fit] Fit into largest hole, resulting in left-over hole
+            whose size is maximized
+    \end{description}
+
+    \begin{flushright}
+        \vspace*{-2em}
+        \subsubsection*{Segmentation}
+    \end{flushright}
+    Logical Address \(->\) <segment num, offset>
+    \begin{equation*}
+        \text{Logical Address} -> \begin{cases}
+            \text{Segment Number, offset} \\
+            S, D
+        \end{cases}
+    \end{equation*}
+
+    \setlength{\columnsep}{-3em}
+
+    \vspace*{-2em}
+
+    \begin{multicols*}{2}
+        S is the index into the table which identifies a row containing limit and base value.
+        In the example table, <3, 200>, <3, 60000> would result in address errors
+        \columnbreak
+        \begin{center}
+            Segment Table \\
+            \begin{tabular}{c|c}
+                limit & base \\
+                1400  & 2500 \\
+                2600  & 3500 \\
+                17000 & 1800
+            \end{tabular}
+        \end{center}
+    \end{multicols*}
+
+    \vspace*{-3.5em}
+    \subsubsection*{Allocation}
+    \vspace*{-1.5em}
+    \setlength{\columnsep}{1em}
+    \begin{multicols*}{2}
+        If process \(p_i\) needs \(s_i\) amount of virtual memory\dots
+        \begin{equation*}
+            S = \sum_{i=0}^{n} s_i
+        \end{equation*}
+        \columnbreak \\
+        If total amount of available frames is \(m\), dole out for process \(i\):
+        \begin{equation*}
+            a_i = (s_i / S) \times m
+        \end{equation*}
+    \end{multicols*}
+
+    \vspace*{-2em}
+    The \emph{minimum} frames per process is defined by the architecture \\
+    The \emph{maximum} frames per process is upper bounded by frames available
+    \subsubsection*{Fragmentation}
+    \begin{description}
+        \item[External] occurs when unused space is non-contiguous
+        \item[Internal] refers to the unused space within a frame / page
+    \end{description}
+
+    \subsection*{Paging}
+    A page size must be a power of 2, usually between 512 bytes and 1 GB.
+    \begin{multicols*}{2}
+        \begin{minipage}{0.5\columnwidth}
+            \begin{tblr}{
+                    colspec = {c|c|},
+                    row{1-4} = {red!5},
+                    row{5-8} = {blue!5},
+                    row{9-12} = {black!5},
+                    row{13-16} = {yellow!5},
+                    cell{2}{2} = {orange},
+                    cell{6}{2} = {blue},
+                    cell{15}{2} = {yellow},
+                }
+                \cline{2-3} \\
+                1 byte & \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3} \\
+                \cline{2-3}
+            \end{tblr}
+        \end{minipage}
+        \columnbreak
+        \begin{minipage}{1.5\columnwidth}
+            The \(m-n\) highest order bits are needed to address into the page
+            table.
+            \begin{align*}
+                \text{Logical Address Space } & = 2^m = 2^4 = 16              \\
+                \text{Page Size}              & = 2^n = 2^2 = 4 \text{ bytes} \\
+            \end{align*}
+
+            \setlength{\columnsep}{-3cm}
+            \begin{multicols*}{2}
+                \begin{tblr}{
+                        colspec = {c|c|c|},
+                        cell{2}{1} = {orange},
+                        cell{3}{1} = {blue},
+                        cell{4}{1} = {yellow},
+                    }
+                    & p & d \\
+                    \cline{2-3}
+                    & 00&01\\
+                    & 01&01\\
+                    & 11&10
+                \end{tblr}
+                \columnbreak \\
+                Thus, the logical address gives us some \((p, d)\). We use \(p\)
+                to index into the page table to find the correct frame \((f)\), with the
+                offset of \(d\) (which is from the \(n\) lower bits of the
+                address). Thus our physical address is \((f, d)\).
+            \end{multicols*}
+            A single datum in logical address space still requires reserving the
+            entire frame for that datum. Internal fragmentation refers to the
+            unused space within a frame/page.
+            \subsubsection*{Downsides}
+            \begin{itemize}
+                \item Every mapping MUST go through page table
+                \item A page table can be implemented via registers, but this limits their size
+                \item One solution is putting it in main memory, and having the PTBR point to where it is
+            \end{itemize}
+        \end{minipage}
+    \end{multicols*}
+
+    \subsubsection*{Inverted Page Table}
+    A SINGLE page table regardless of how many processes.
+    CPU generates a pid, page number, and offset.
+    \begin{multicols*}{2}
+        Search the entire page table for <\(pid, p\)>.
+        The \emph{index} of that entry is the frame number.
+        \columnbreak
+        \begin{center}
+            Inverted Page Table \\
+            \begin{tabular}{|cc|}
+                \hline
+                pid & p \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{multicols*}
+
+    \setlength{\columnsep}{1em}
+    \subsection*{Virtual Memory}
+    \begin{multicols}{2}
+        \subsubsection*{Page Replacement}
+        \begin{description}
+            \item[FIFO] First In First Out
+            \item[LRU] Least Recently Used \\
+                Could be implemented concretely (timestamp), or use a reference
+                bit
+            \item[LFU] Least Frequently Used
+            \item[RNG] Random
+        \end{description}
+        \columnbreak
+        \subsubsection*{Belady's Anomaly}
+        The phenomenon in which increasing the number of page frames results in
+        an increase in the number of page faults for certain memory access
+        patterns.
+    \end{multicols}
+    \subsubsection*{Effective Access Time}
+    \begin{equation*}
+        EAT = (1 - p) \times ma + p(fault)
+    \end{equation*}
+    \subsubsection*{Copy-on-Write}
+    If two processes rely on the same pages in physical memory, the OS can
+    allocate a single page to both processes. If one process writes to the page,
+    the OS will allocate a new page to the process that wrote to it, and `copy'
+    the contents of the original page to the new page.
+
+    \subsection*{Miscellaneous}
+    \begin{itemize}
+        \item T/F: If segmentation is used, and the total free (unallocated) main memory is
+              128MB, then the OS can place into main memory a segment of size 64MB.
+
+              False - Holes might be tiny
+
+        \item RMS is neither optimal nor guaranteed to work even if CPU util is \(< 1\)
+        \item Given \(n\) invocations of \texttt{fork}, there will be \(2^n - 1\) child
+              processes
+        \item An I/O request would induce a process changing from running -> waiting.
+        \item For a logical address space of 16 bytes, among which there are 8 pages, and
+              assuming the use of a page table:
+
+              \begin{itemize}
+                  \item For the corresponding physical memory, each frame is 2 bytes
+                  \item The last byte of frame 1 has a corresponding logical memory address whose offset is 1
+                  \item The 3 highest bit of the logical address are used to index into the page table.
+              \end{itemize}
+
+              Reasoning:
+              \vspace*{-2em}
+              \begin{align*}
+                  2^4 \Rightarrow m                  & = 4                                                \\
+                  2^3 \Rightarrow n                  & = 3 \text{ bits for page table index}              \\
+                  16 \text{ bytes} / 8 \text{ pages} & = 2 \text{ bytes per page \emph{and} frame}        \\
+                  m - n = 4 - 3                      & = 1 \text{ bit}       \text{ for the offset}       \\
+                  \text{Last byte of first frame }   & = \underbrace{000}_{\mathclap{\text{page index}}}1
+              \end{align*}
+        \item As the number of frames allocated to each process decreases, \emph{overall page fault} rate goes up
+    \end{itemize}
+\end{multicols*}
+\end{document}
